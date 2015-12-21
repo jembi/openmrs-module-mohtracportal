@@ -6,7 +6,6 @@
 		<artifactId>mohtracportal</artifactId>
 		<version>0.2.4-SNAPSHOT</version>
 	</parent>
-	<groupId>org.openmrs.module</groupId>
 	<artifactId>mohtracportal-omod</artifactId>
 	<packaging>jar</packaging>
 	<name>MOH-Trac Portal OMOD</name>
