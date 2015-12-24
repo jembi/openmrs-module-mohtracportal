@@ -89,7 +89,7 @@ public class MohTracConfigurationUtil {
 	public static Integer getPmtctProgramId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.program.pmtct");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.valueOf(gp.getPropertyValue())
 				: -1;
 	}
