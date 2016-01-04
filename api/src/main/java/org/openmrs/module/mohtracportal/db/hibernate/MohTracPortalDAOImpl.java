@@ -10,12 +10,15 @@ import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Expression;
 import org.hibernate.criterion.Restrictions;
 import org.openmrs.Concept;
 import org.openmrs.Location;
 import org.openmrs.Obs;
+import org.openmrs.OrderType;
 import org.openmrs.Person;
 import org.openmrs.api.context.Context;
 import org.openmrs.module.mohtracportal.SampleCode;
@@ -478,6 +481,17 @@ public class MohTracPortalDAOImpl implements MohTracPortalDAO {
 	public int executeMySQLCommand(String sql) {
 		return getSession().createSQLQuery(sql).executeUpdate();
 
+	}
+
+	@Override
+	public List<OrderType> getAllOrderTypes(boolean includeRetired) {
+		Criteria crit = sessionFactory.getCurrentSession().createCriteria(OrderType.class);
+		
+		if (includeRetired == false) {
+			crit.add(Expression.eq("retired", false));
+		}
+		
+		return crit.list();
 	}
 
 }

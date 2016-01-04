@@ -9,6 +9,7 @@ import java.util.List;
 import org.openmrs.Concept;
 import org.openmrs.Location;
 import org.openmrs.Obs;
+import org.openmrs.OrderType;
 import org.openmrs.Person;
 import org.openmrs.module.mohtracportal.SampleCode;
 import org.openmrs.module.mohtracportal.Sponsor;
@@ -96,5 +97,7 @@ public interface MohTracPortalDAO {
 	/* end Patient list */
 
 	public int executeMySQLCommand(String sql);
+
+	public List<OrderType> getAllOrderTypes(boolean includeRetired);
 
 }

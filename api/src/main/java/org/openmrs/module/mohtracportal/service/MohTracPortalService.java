@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.openmrs.Concept;
+import org.openmrs.DrugOrder;
 import org.openmrs.Location;
 import org.openmrs.Obs;
+import org.openmrs.OrderType;
+import org.openmrs.Patient;
 import org.openmrs.Person;
 import org.openmrs.module.mohtracportal.SampleCode;
 import org.openmrs.module.mohtracportal.Sponsor;
@@ -94,4 +97,7 @@ public interface MohTracPortalService {
 	
 	public int executeMySQLCommand(String sql);
 
+	public List<DrugOrder> getDrugOrdersByPatient(Patient patient);
+	
+	public List<OrderType> getAllOrderTypes(boolean includeRetired);
 }

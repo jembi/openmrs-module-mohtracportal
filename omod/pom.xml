@@ -108,13 +108,6 @@
 				<extensions>true</extensions>
 				<executions>
 					<execution>
-						<id>init</id>
-						<phase>initialize</phase>
-						<goals>
-							<goal>initialize-module</goal>
-						</goals>
-					</execution>
-					<execution>
 						<id>pack</id>
 						<phase>package</phase>
 						<goals>
