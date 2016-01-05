@@ -18,13 +18,12 @@ public class MohTracPortalServiceTest extends BaseModuleContextSensitiveTest{
 	@Before
 	public void setup() {
 		orderService = Context.getOrderService();
+		mohTracPortalService = Context.getService(MohTracPortalService.class);
 	}
 	
 	@Verifies(value = "should Save a new orderfrequency if the coded concept doesn't exist and returns the newly saved one else returns the one existing", method = "persistAndOrFetchOrderFrequency(String)")
 	@Test
 	public void persistAndOrFetchOrderFrequency_shouldWorkAsExpected() throws Exception {
-		mohTracPortalService = Context.getService(MohTracPortalService.class);
-		
 		OrderFrequency of = mohTracPortalService.persistAndOrFetchOrderFrequency("testing freq", 2d);
 		
 		Assert.assertNotNull(of);

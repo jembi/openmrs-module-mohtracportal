@@ -231,20 +231,22 @@ public class MohTracPortalServiceImpl implements MohTracPortalService {
 	@Override
 	public OrderFrequency persistAndOrFetchOrderFrequency(String codedConceptName, Double freqPerDay) {
 		Concept existingConcept = Context.getConceptService().getConceptByName(codedConceptName);
-		Concept concept = new Concept();
+		Concept concept = null;
 		
 		if(existingConcept != null && existingConcept.getConceptClass().getName().equals("Frequency")) {
 			concept = existingConcept;
+			
+			return Context.getOrderService().getOrderFrequencyByConcept(concept);
 		} else {
 			concept = new Concept();
 			concept.addName(new ConceptName(codedConceptName, Context.getLocale()));
 			concept.setConceptClass(Context.getConceptService().getConceptClassByName("Frequency"));
 			concept = Context.getConceptService().saveConcept(concept);
+			OrderFrequency orderFrequency = new OrderFrequency();
+			orderFrequency.setConcept(concept);
+			orderFrequency.setFrequencyPerDay(freqPerDay == null ? 2d : freqPerDay);
+			
+			return Context.getOrderService().saveOrderFrequency(orderFrequency);
 		}
-		OrderFrequency orderFrequency = new OrderFrequency();
-		orderFrequency.setConcept(concept);
-		orderFrequency.setFrequencyPerDay(freqPerDay == null ? 2d : freqPerDay);
-		
-		return Context.getOrderService().saveOrderFrequency(orderFrequency);
 	}
 }
