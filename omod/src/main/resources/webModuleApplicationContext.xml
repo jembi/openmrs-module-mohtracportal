@@ -100,42 +100,6 @@
 	
 	<!-- /validators -->
 	
-	<!-- Services accessible via Context.getService() -->
-	<bean id="mohTracPortalService"
-		class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
-		<property name="transactionManager">
-			<ref bean="transactionManager" />
-		</property>
-		<property name="preInterceptors">
-			<list>
-				<ref bean="authorizationInterceptor" />
-			</list>
-		</property>
-		<property name="transactionAttributeSource">
-			<bean class="org.springframework.transaction.annotation.AnnotationTransactionAttributeSource" />
-		</property>
-		<property name="target">
-			<bean class="org.openmrs.module.mohtracportal.impl.MohTracPortalServiceImpl">
-				 <property name="dao">
-                    <bean class="org.openmrs.module.mohtracportal.db.hibernate.HibernateMohTracPortalDAO">
-                        <property name="sessionFactory"><ref bean="dbSessionFactory"/></property>
-                    </bean>
-                </property>
-    		</bean>
-    	</property>
-    </bean>
-    
-     <!-- Service -->
-	 <bean parent="serviceContext">
-		<property name="moduleService">
-			<list>
-				<value>org.openmrs.module.mohtracportal.service.MohTracPortalService</value>
-				<ref local="mohTracPortalService"/>
-			</list>
-		</property>
-		
-	</bean>
-	
     <!-- ========================= other beans ========================= -->
  
 	<bean class="@MODULE_PACKAGE@.util.ContextProvider" />
