@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.openmrs.Concept;
+import org.openmrs.ConceptName;
 import org.openmrs.DrugOrder;
 import org.openmrs.Location;
 import org.openmrs.Obs;
 import org.openmrs.Order;
+import org.openmrs.OrderFrequency;
 import org.openmrs.OrderType;
 import org.openmrs.Patient;
 import org.openmrs.Person;
@@ -221,5 +223,28 @@ public class MohTracPortalServiceImpl implements MohTracPortalService {
 	@Override
 	public List<OrderType> getAllOrderTypes(boolean includeRetired) {
 		return portalDao.getAllOrderTypes(includeRetired);
+	}
+	
+	/**
+	 * see {@link MohTracPortalService#persistAndOrFetchOrderFrequency(String)}
+	 */
+	@Override
+	public OrderFrequency persistAndOrFetchOrderFrequency(String codedConceptName, Double freqPerDay) {
+		Concept existingConcept = Context.getConceptService().getConceptByName(codedConceptName);
+		Concept concept = new Concept();
+		
+		if(existingConcept != null && existingConcept.getConceptClass().getName().equals("Frequency")) {
+			concept = existingConcept;
+		} else {
+			concept = new Concept();
+			concept.addName(new ConceptName(codedConceptName, Context.getLocale()));
+			concept.setConceptClass(Context.getConceptService().getConceptClassByName("Frequency"));
+			concept = Context.getConceptService().saveConcept(concept);
+		}
+		OrderFrequency orderFrequency = new OrderFrequency();
+		orderFrequency.setConcept(concept);
+		orderFrequency.setFrequencyPerDay(freqPerDay == null ? 2d : freqPerDay);
+		
+		return Context.getOrderService().saveOrderFrequency(orderFrequency);
 	}
 }

@@ -31,7 +31,7 @@ import org.openmrs.module.mohtracportal.util.MohTracUtil;
  * @author Yves GAKUBA
  * 
  */
-public class MohTracPortalDAOImpl implements MohTracPortalDAO {
+public class HibernateMohTracPortalDAO implements MohTracPortalDAO {
 
 	private Log log = LogFactory.getLog(this.getClass());
 	private SessionFactory sessionFactory;

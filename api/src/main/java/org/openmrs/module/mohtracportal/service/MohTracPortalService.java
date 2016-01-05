@@ -10,6 +10,7 @@ import org.openmrs.Concept;
 import org.openmrs.DrugOrder;
 import org.openmrs.Location;
 import org.openmrs.Obs;
+import org.openmrs.OrderFrequency;
 import org.openmrs.OrderType;
 import org.openmrs.Patient;
 import org.openmrs.Person;
@@ -100,4 +101,9 @@ public interface MohTracPortalService {
 	public List<DrugOrder> getDrugOrdersByPatient(Patient patient);
 	
 	public List<OrderType> getAllOrderTypes(boolean includeRetired);
+
+	/**
+	 * @should Save a new orderfrequency if the coded concept doesn't exist and returns the newly saved one else returns the one existing
+	 */
+	public OrderFrequency persistAndOrFetchOrderFrequency(String codedConceptName, Double freqPerDay);
 }
