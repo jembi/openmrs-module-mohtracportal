@@ -3,38 +3,39 @@
 
 <module configVersion="1.2">
 
-	<id>@MODULE_ID@</id>
-	<name>@MODULE_NAME@</name>
-	<version>@MODULE_VERSION@</version>
-	<package>@MODULE_PACKAGE@</package>
+	<!-- Module Properties -->
+	<id>${project.parent.artifactId}</id>
+	<name>${project.parent.name}</name>
+	<version>${project.parent.version}</version>
+	<package>${project.parent.groupId}.${project.parent.artifactId}</package>
 	<author>MOH</author>
 	<description>
 		All modules from MoH-TRAC plus
 	</description>
 
-	<activator>@MODULE_PACKAGE@.MohTracPortalModuleActivator</activator>
+	<activator>${project.parent.groupId}.${project.parent.artifactId}.MohTracPortalModuleActivator</activator>
 
 	<require_version>1.6.2.12911</require_version>
 
 	<!-- <extension>
 		<point>org.openmrs.navigation.homepage</point>
-		<class>@MODULE_PACKAGE@.extension.html.RedirectToActivityPage</class>
+		<class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.RedirectToActivityPage</class>
 	</extension>
 
 	<extension>
 		<point>org.openmrs.gutter.tools</point>
-		<class>@MODULE_PACKAGE@.extension.html.MohTracActivitiesGutterLink</class>
+		<class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.MohTracActivitiesGutterLink</class>
 	</extension> -->
 	
 	<extension>
 		<point>org.openmrs.admin.list</point>
-		<class>@MODULE_PACKAGE@.extension.html.AdminList</class>
+		<class>${project.parent.groupId}.${project.parent.artifactId}.extension.html.AdminList</class>
 	</extension>
 
 
 	<!--
 		AOP <advice> <point>org.openmrs.api.FormService</point>
-		<class>@MODULE_PACKAGE@.advice.DuplicateFormAdvisor</class> </advice>
+		<class>${project.parent.groupId}.${project.parent.artifactId}.advice.DuplicateFormAdvisor</class> </advice>
 		/AOP
 	-->
 
@@ -125,7 +126,7 @@
 
 	<!-- Required Global Properties -->
 	<globalProperty>
-		<property>@MODULE_ID@.configured</property>
+		<property>${project.parent.artifactId}.configured</property>
 		<defaultValue>false</defaultValue>
 		<description> If this value is FALSE, that means the module has not
 			been
@@ -133,73 +134,73 @@
 	</globalProperty>
 	
 	<globalProperty>
-		<property>@MODULE_ID@.helpmessage.display</property>
+		<property>${project.parent.artifactId}.helpmessage.display</property>
 		<defaultValue>true</defaultValue>
 		<description> This will allow help message to be displayed, if set to true.</description>
 	</globalProperty>
 	
 	<globalProperty>
-		<property>@MODULE_ID@.cd4count.criticallevel</property>
+		<property>${project.parent.artifactId}.cd4count.criticallevel</property>
 		<defaultValue>350</defaultValue>
 		<description> This should be a numeric value indicating the critical level of CD4 count.</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.program.hiv</property>
+		<property>${project.parent.artifactId}.program.hiv</property>
 		<defaultValue></defaultValue>
 		<description> This should be the HIV program_id</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.program.pmtct</property>
+		<property>${project.parent.artifactId}.program.pmtct</property>
 		<defaultValue></defaultValue>
 		<description> This should be the PMTCT program_id</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.attributeType.civilStatus</property>
+		<property>${project.parent.artifactId}.attributeType.civilStatus</property>
 		<defaultValue></defaultValue>
 		<description> This should be the "Civil Status attribute type id"</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.attributeType.educationLevel</property>
+		<property>${project.parent.artifactId}.attributeType.educationLevel</property>
 		<defaultValue></defaultValue>
 		<description> This should be the "Education Level attribute type id"</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.attributeType.mainActivity</property>
+		<property>${project.parent.artifactId}.attributeType.mainActivity</property>
 		<defaultValue></defaultValue>
 		<description> This should be the "Main Activity attribute type id"</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.recordperpage</property>
+		<property>${project.parent.artifactId}.recordperpage</property>
 		<defaultValue>25</defaultValue>
 		<description> The number of record per page</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.defaultLocationId</property>
+		<property>${project.parent.artifactId}.defaultLocationId</property>
 		<defaultValue></defaultValue>
 		<description> Default location</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.identifierType.nid</property>
+		<property>${project.parent.artifactId}.identifierType.nid</property>
 		<defaultValue></defaultValue>
 		<description> This should be the "National ID" Identifier type</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.identifierType.tracnet</property>
+		<property>${project.parent.artifactId}.identifierType.tracnet</property>
 		<defaultValue></defaultValue>
 		<description> This should be the "TRACNET ID" Identifier type</description>
 	</globalProperty>
 
 	<globalProperty>
-		<property>@MODULE_ID@.identifierType.hc_localid</property>
+		<property>${project.parent.artifactId}.identifierType.hc_localid</property>
 		<defaultValue></defaultValue>
 		<description> This should be the any other important Identifier that can be used in the Health center</description>
 	</globalProperty>
@@ -224,14 +225,14 @@
 		Accessed through the url
 		/pageContext()/moduleServlet/<moduleId>/<servlet-name> <servlet>
 		<servlet-name>formDownload</servlet-name>
-		<servlet-class>@MODULE_PACKAGE@.web.FormDownloadServlet</servlet-class>
+		<servlet-class>${project.parent.groupId}.${project.parent.artifactId}.web.FormDownloadServlet</servlet-class>
 		</servlet>
 	-->
 	<!-- /Servlets -->
 
 
 	<!-- Internationalization -->
-	<!-- All message codes should start with @MODULE_ID@.* -->
+	<!-- All message codes should start with ${project.parent.artifactId}.* -->
 	<messages>
 		<lang>en</lang>
 		<file>messages.properties</file>
