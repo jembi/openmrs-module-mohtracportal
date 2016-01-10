@@ -28,7 +28,7 @@ public class MohTracConfigurationUtil {
 	public static Integer getNumberOfRecordPerPage() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.recordperpage");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.valueOf(gp.getPropertyValue())
 				: 25;
 	}
@@ -40,7 +40,7 @@ public class MohTracConfigurationUtil {
 	public static Integer getDefaultLocationId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.defaultLocationId");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.valueOf(gp.getPropertyValue())
 				: 1;
 	}
@@ -53,7 +53,7 @@ public class MohTracConfigurationUtil {
 	public static boolean isConfigured() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.configured");
-		return (gp != null) ? ((gp.getPropertyValue().compareToIgnoreCase(
+		return (gp != null && gp.getPropertyValue() != null) ? ((gp.getPropertyValue().compareToIgnoreCase(
 				"true") == 0) ? true : false) : true;
 	}
 	
@@ -66,7 +66,7 @@ public class MohTracConfigurationUtil {
 	public static boolean displayHelpMessage() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.helpmessage.display");
-		return (gp != null) ? ((gp.getPropertyValue().compareToIgnoreCase(
+		return (gp != null && gp.getPropertyValue() != null) ? ((gp.getPropertyValue().compareToIgnoreCase(
 				"true") == 0) ? true : false) : true;
 	}
 
@@ -77,7 +77,7 @@ public class MohTracConfigurationUtil {
 	public static Integer getHivProgramId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.program.hiv");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.valueOf(gp.getPropertyValue())
 				: -1;
 	}
@@ -101,7 +101,7 @@ public class MohTracConfigurationUtil {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject(
 						"mohtracportal.attributeType.civilStatus");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.parseInt(gp.getPropertyValue())
 				: null;
 	}
@@ -113,7 +113,7 @@ public class MohTracConfigurationUtil {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject(
 						"mohtracportal.attributeType.educationLevel");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.parseInt(gp.getPropertyValue())
 				: null;
 	}
@@ -125,7 +125,7 @@ public class MohTracConfigurationUtil {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject(
 						"mohtracportal.attributeType.mainActivity");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.parseInt(gp.getPropertyValue())
 				: null;
 	}
@@ -161,7 +161,7 @@ public class MohTracConfigurationUtil {
 	public static int getNIDIdentifierTypeId() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.identifierType.nid");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.parseInt(gp.getPropertyValue())
 				: null;
 	}
@@ -174,7 +174,7 @@ public class MohTracConfigurationUtil {
 		GlobalProperty gp = Context
 				.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.identifierType.tracnet");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.parseInt(gp.getPropertyValue())
 				: null;
 	}
@@ -187,7 +187,7 @@ public class MohTracConfigurationUtil {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject(
 						"mohtracportal.identifierType.hc_localid");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Integer
 				.parseInt(gp.getPropertyValue())
 				: null;
 	}
@@ -200,7 +200,7 @@ public class MohTracConfigurationUtil {
 	public static Double getCriticalLevelOfCD4Count() throws Exception {
 		GlobalProperty gp = Context.getAdministrationService()
 				.getGlobalPropertyObject("mohtracportal.cd4count.criticallevel");
-		return (gp != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Double
+		return (gp != null && gp.getPropertyValue() != null && gp.getPropertyValue().trim().compareTo("") != 0) ? Double
 				.valueOf(gp.getPropertyValue())
 				: 350.0;
 	}

@@ -15,7 +15,7 @@
 
 	<activator>${project.parent.groupId}.${project.parent.artifactId}.MohTracPortalModuleActivator</activator>
 
-	<require_version>1.6.2.12911</require_version>
+	<require_version>1.9.9</require_version>
 
 	<!-- <extension>
 		<point>org.openmrs.navigation.homepage</point>
